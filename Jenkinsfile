@@ -20,7 +20,7 @@ pipeline {
                     archive "target/**/*"
                 }
             }
-
+        }
         stage ('Deploy'){
             steps {
                 echo 'Code deployed.'
