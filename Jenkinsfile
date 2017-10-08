@@ -16,6 +16,9 @@ pipeline {
                 
                 sh 'mvn clean package'
             }
+            steps {
+                archive: '**/*.war'
+            }
         }
 
         stage ('Deploy'){
