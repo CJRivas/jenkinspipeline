@@ -1,15 +1,15 @@
 pipeline {
     agent any
-    stages{
-        stage('Init'){
-            steps {
-                echo "Testing..."
-            }
-        }
+    
+    tools { 
+        maven 'Maven 3.0.5' 
+        jdk 'jdk8' 
+    }
 
+    stages{
         stage('Build'){
             steps {
-                echo 'Building...'
+                echo 'mvn clean package'
             }
         }
 
