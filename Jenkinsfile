@@ -7,10 +7,13 @@ pipeline {
         
     }
 
+    environment {
+        JAVA_HOME="/opt/bitnami/java"
+    }
     stages{
         stage('Build'){
             steps {
-                env.JAVA_HOME="/opt/bitnami/java"
+                
                 sh 'mvn clean package'
             }
         }
