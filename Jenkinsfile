@@ -14,9 +14,12 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'mvn clean package'
-                archive: '**/*.war'
             }
-        }
+            post {
+                success {
+                    archive "target/**/*"
+                }
+            }
 
         stage ('Deploy'){
             steps {
