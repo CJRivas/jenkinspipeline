@@ -13,10 +13,11 @@ pipeline {
             }
         }
         stage ('Deploy to Staging'){
-            timeout(time:5, unit:'DAYS') {
-                input message:'Approve deployment?', submitter: 'it-ops'
-            }
             steps {
+                timeout(time:5, unit:'DAYS') {
+                    input message:'Approve deployment?', submitter: 'it-ops'
+                }
+
                 echo 'Code deployed.'
                 build job: 'Deploy-to-staging' 
             }
