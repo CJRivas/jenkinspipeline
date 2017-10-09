@@ -14,11 +14,6 @@ pipeline {
         }
         stage ('Deploy to Staging'){
             steps {
-                timeout(time:5, unit:'DAYS') {
-                    input message:'Approve deployment?'
-                }
-
-                echo 'Code deployed.'
                 build job: 'Deploy-to-staging' 
             }
         }
@@ -30,7 +25,14 @@ pipeline {
                 }
 
                 build job: 'Deploy-to-Prod' 
-                echo 'Code deployed to Production.'
+            }
+            post {
+                success {
+                    echo 'Code deployed to Production.'
+                }
+                failure {
+                    echo ' Build failed.'
+                }
             }
         }
 
