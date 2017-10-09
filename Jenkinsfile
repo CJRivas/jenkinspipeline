@@ -15,7 +15,7 @@ pipeline {
         stage ('Deploy to Staging'){
             steps {
                 timeout(time:5, unit:'DAYS') {
-                    input message:'Approve deployment?', submitter: 'it-ops'
+                    input message:'Approve deployment?'
                 }
 
                 echo 'Code deployed.'
