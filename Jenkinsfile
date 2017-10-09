@@ -7,17 +7,15 @@ pipeline {
         
     }
 
-    environment {
-        JAVA_HOME="/opt/bitnami/java"
-    }
     stages{
         stage('Build'){
             steps {
                 sh 'mvn clean package'
             }
             post {
+                echo 'Now Archiving...'
                 success {
-                    archive "target/**/*"
+                    archive "**/*.war"
                 }
             }
         }
