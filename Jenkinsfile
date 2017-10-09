@@ -1,12 +1,5 @@
 pipeline {
     agent any
-    
-    tools { 
-        maven 'Maven 3.0.5' 
-        jdk 'jdk8'
-        
-    }
-
     stages{
         stage('Build'){
             steps {
@@ -19,9 +12,13 @@ pipeline {
                 }
             }
         }
-        stage ('Deploy'){
+        stage ('Deploy to Staging'){
+            timeout(time:5, unit:'DAYS') {
+                input message:'Approve deployment?', submitter: 'it-ops'
+            }
             steps {
                 echo 'Code deployed.'
+                build job: 'Deploy-to-staging' 
             }
         }
 
