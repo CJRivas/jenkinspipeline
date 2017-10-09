@@ -13,8 +13,8 @@ pipeline {
                 sh 'mvn clean package'
             }
             post {
-                echo 'Now Archiving...'
                 success {
+                    echo 'Now Archiving...'
                     archive "**/*.war"
                 }
             }
