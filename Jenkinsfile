@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('Deploy to Staging'){
             steps {
-                sh 'whoami; who; sudo scp -i /home/bitnami/demo.pem **/target/*.war ec2-user@35.166.210.154:/var/lib/tomcat7/webapps/'
+                sh 'sudo scp -i /home/tomcat/demo.pem **/target/*.war ec2-user@35.166.210.154:/var/lib/tomcat7/webapps/'
             }
         }
 
