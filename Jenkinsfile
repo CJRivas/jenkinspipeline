@@ -22,26 +22,5 @@ pipeline {
                 sh 'scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@35.166.210.154:/var/lib/tomcat7/webapps'
             }
         }
-
-        stage ('Deploy to Production'){
-            steps{
-                timeout(time:5, unit:'SECONDS'){
-                    input message:'Approve PRODUCTION Deployment?'
-                }
-
-                build job: 'Deploy-to-Prod'
-            }
-            post {
-                success {
-                    echo 'Code deployed to Production.'
-                }
-
-                failure {
-                    echo ' Deployment failed.'
-                }
-            }
-        }
-
-
     }
 }
