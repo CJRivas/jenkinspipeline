@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('Deploy to Staging'){
             steps {
-                build job: 'Deploy-to-staging'
+                sh 'scp **/target/*.war ec2-user@35.166.210.154/var/lib/tomcat7/webapps/'
             }
         }
 
