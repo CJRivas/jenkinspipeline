@@ -13,6 +13,7 @@ pool:
 steps:
 - task: SonarCloudPrepare@1
   inputs:
+    organization: 'gurditsinghbrar92'
     SonarCloud: 'sonar-azure-connection'
     scannerMode: 'Other'
 - task: Maven@3
