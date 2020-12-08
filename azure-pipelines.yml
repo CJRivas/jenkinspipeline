@@ -13,9 +13,15 @@ pool:
 steps:
 - task: SonarCloudPrepare@1
   inputs:
-    organization: 'gurditsinghbrar92'
     SonarCloud: 'sonar-azure-connection'
+    organization: 'gurditsinghbrar92'
     scannerMode: 'Other'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner,
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.projectKey=gurditsinghbrar92_public-project
+      sonar.projectName=public project
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
