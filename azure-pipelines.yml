@@ -25,5 +25,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
-- task: SonarCloudAnalyze@1
+  
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
